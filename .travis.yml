@@ -12,10 +12,10 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install -r tests/requirements/requirements.txt
+  - pip install coveralls
 
 script:
-  - nosetests --with-coverage
+  - nosetests --with-coverage --cover-package=dnsdb_sdk
 
 after_success:
-  - pip install codecov
-  - codecov
+  - coveralls
