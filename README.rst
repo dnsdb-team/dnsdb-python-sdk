@@ -4,13 +4,14 @@ DnsDB Python SDK
 
 .. image:: https://img.shields.io/travis/dnsdb-team/dnsdb-python-sdk/master.svg
     :target: https://travis-ci.org/dnsdb-team/dnsdb-python-sdk
+.. image:: https://coveralls.io/repos/github/dnsdb-team/dnsdb-python-sdk/badge.svg?branch=master
+    :target: https://coveralls.io/github/dnsdb-team/dnsdb-python-sdk?branch=master
 .. image:: https://img.shields.io/pypi/v/dnsdb-python-sdk.svg
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
 .. image:: https://img.shields.io/pypi/pyversions/dnsdb-python-sdk.svg
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
 .. image:: https://img.shields.io/pypi/l/dnsdb-python-sdk.svg
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
-
 
 **dnsdb-python-sdk** 是 DNSDB_ 为开发者提供的python SDK。使用该SDK，您可以方便的将DNSDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。查看教程_。
 
