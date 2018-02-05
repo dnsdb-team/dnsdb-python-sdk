@@ -34,7 +34,9 @@ def check_api_exception(client_func, error):
 def test_search():
     api_user = APIUser('admin')
     client = APIClient(api_id=api_user.api_id, api_key=api_user.api_key)
-    result = client.search_dns()
+    result = client.search_dns(domain='google.com', dns_type='a', host='google.com', ip='1.1.1.1',
+                               value_host='google.com', value_ip='1.1.1.1', value_domain='google.com',
+                               email='admin@foo.com', per_size=50)
     count = 0
     for _ in result:
         count += 1
@@ -83,8 +85,9 @@ def test_scan():
         'total': total
     }
     api_mock_server.restart()
-    result = client.scan_dns(domain='google.com', dns_type='a', host='', ip='', value_host='', value_ip='', value_domain='',
-                             email='', per_size=3)
+    result = client.scan_dns(domain='google.com', dns_type='a', host='google.com', ip='1.1.1.1',
+                             value_host='google.com', value_ip='1.1.1.1', value_domain='google.com',
+                             email='admin@foo.com', per_size=3)
     assert_equal(result.total, total)
     assert_equal(len(result), total)
     count = 0

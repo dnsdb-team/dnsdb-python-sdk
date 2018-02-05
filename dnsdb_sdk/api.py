@@ -186,9 +186,9 @@ class APIClient(object):
         return self.__request_get(self.__get_api_url('api_user'))
 
     def search_dns(self, domain=None, ip=None, host=None, dns_type=None, value_domain=None, value_host=None,
-                   value_ip=None, email=None, page=1, page_size=None):
+                   value_ip=None, email=None, page=1, per_size=None):
         response = self.search_dns_response(domain, ip, host, dns_type, value_domain, value_host, value_ip, email, page,
-                                            page_size)
+                                            per_size)
         if response.has_error():
             raise APIException(response.error_code, response.error_msg)
         else:
