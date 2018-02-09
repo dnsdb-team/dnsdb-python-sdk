@@ -2,11 +2,11 @@ from __future__ import print_function, unicode_literals
 
 import uuid
 
-from nose import with_setup
-from nose.tools import assert_equal
-
-from dnsdb_sdk.api import APIClient
+from dnsdb_sdk.api import APIClient, DNSRecord
 from dnsdb_sdk.exceptions import APIException
+from nose import with_setup
+from nose.tools import assert_equal, assert_true
+
 from tests import api_mock_server, errors
 from tests.api_mock_server import APIUser
 
@@ -38,7 +38,8 @@ def test_search():
                                value_host='google.com', value_ip='1.1.1.1', value_domain='google.com',
                                email='admin@foo.com', per_size=50)
     count = 0
-    for _ in result:
+    for record in result:
+        assert_true(isinstance(record, DNSRecord))
         count += 1
     assert_equal(len(result), count)
     assert_equal(result.total, len(api_mock_server.records))
@@ -91,8 +92,9 @@ def test_scan():
     assert_equal(result.total, total)
     assert_equal(len(result), total)
     count = 0
-    for _ in result:
+    for record in result:
         count += 1
+        assert_true(isinstance(record, DNSRecord))
     assert_equal(count, total)
     check_api_exception(client.scan_dns, errors.AUTHENTICATION_FAILED)
     check_api_exception(client.scan_dns, errors.INVALID_API_ID)

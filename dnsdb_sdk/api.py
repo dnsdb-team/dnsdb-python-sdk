@@ -5,7 +5,6 @@ import logging
 import platform
 
 import requests
-
 from dnsdb_sdk.__init__ import __version__
 from dnsdb_sdk.exceptions import APIException
 
@@ -53,7 +52,9 @@ class ScanResponse(APIResponse):
         APIResponse.__init__(self, content, status_code)
         self.scan_id = self.content.get('scan_id')
         self.remaining_requests = self.content.get('remaining_requests')
-        self.records = self.content.get('records')
+        self.records = []
+        for data in self.content.get('records'):
+            self.records.append(DNSRecord(host=data['host'], type=data['type'], value=data['value']))
         self.total = self.content.get('total')
 
 

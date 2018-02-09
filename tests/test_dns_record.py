@@ -1,6 +1,5 @@
-from nose.tools import assert_equal
-
 from dnsdb_sdk.api import DNSRecord
+from nose.tools import assert_equal
 
 
 def test_dns_record():
