@@ -10,6 +10,8 @@ DnsDB Python SDK
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
 .. image:: https://img.shields.io/pypi/pyversions/dnsdb-python-sdk.svg
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
+.. image:: https://img.shields.io/pypi/implementation/dnsdb-python-sdk.svg
+    :target: https://pypi.python.org/pypi/dnsdb-python-sdk
 .. image:: https://img.shields.io/pypi/l/dnsdb-python-sdk.svg
     :target: https://pypi.python.org/pypi/dnsdb-python-sdk
 
