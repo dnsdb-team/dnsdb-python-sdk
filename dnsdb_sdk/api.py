@@ -12,14 +12,10 @@ logger = logging.getLogger(__name__)
 
 
 class DictObject(object):
-    def __getitem__(self, item, ignore=None):
+    def __getitem__(self, item):
         if isinstance(item, int):
             d = self.__dict__
             keys = list(d.keys())
-            if ignore is None:
-                ignore = []
-            for item in ignore:
-                keys.remove(item)
             key = keys[item]
             value = d[key]
             if isinstance(value, list):

@@ -4,8 +4,9 @@ import uuid
 
 from dnsdb_sdk.api import APIClient, DNSRecord
 from dnsdb_sdk.exceptions import APIException
+from mock import Mock
 from nose import with_setup
-from nose.tools import assert_equal, assert_true
+from nose.tools import assert_equal, assert_true, raises
 
 from tests import api_mock_server, errors
 from tests.api_mock_server import APIUser
@@ -121,3 +122,13 @@ def test_get_user():
     check_api_exception(client.get_api_user, errors.INVALID_API_ID)
     check_api_exception(client.get_api_user, errors.INVALID_API_KEY)
     check_api_exception(client.get_api_user, errors.INTERNAL_ERROR)
+
+
+@raises(APIException)
+def test_search_dns_with_api_exception():
+    client = APIClient(api_id='', api_key='')
+    response = Mock()
+    response.error_code = 10001
+    response.error_msg = 'unauthorized'
+    client.search_dns_response = Mock(return_value=response)
+    client.search_dns()
